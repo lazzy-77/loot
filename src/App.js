@@ -2,37 +2,31 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
   Redirect,
+  Switch,
 } from 'react-router-dom';
-import Users from './users/pages/Users';
-import NewProduct from './products/pages/NewProduct';
+
+import Users from './user/pages/Users';
+import NewPlace from './places/pages/NewPlace';
+import MainNavigation from './shared/components/Navigation/MainNavigation';
 
 const App = () => {
   return (
-    <React.Fragment>
-      <Router>
+    <Router>
+      <MainNavigation />
+      <main>
         <Switch>
-          <Route path='/' exact component={Users} />
-          <Route path='/products/new' exact component={NewProduct} />
+          <Route path='/' exact>
+            <Users />
+          </Route>
+          <Route path='/places/new' exact>
+            <NewPlace />
+          </Route>
           <Redirect to='/' />
         </Switch>
-      </Router>
-    </React.Fragment>
+      </main>
+    </Router>
   );
 };
-
-// function App() {
-//   return (
-//     <React.Fragment>
-//       <Router>
-//         <Switch>
-//           <Route exact path='/' component={Home} />
-//           <Route component={NoMatch} />
-//         </Switch>
-//       </Router>
-//     </React.Fragment>
-//   );
-// }
 
 export default App;
